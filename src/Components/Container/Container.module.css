@@ -3,4 +3,8 @@
     height: 600px;
     border: 2px solid black;
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
 }
