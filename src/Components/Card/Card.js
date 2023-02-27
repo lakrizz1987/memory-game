@@ -1,5 +1,6 @@
 import { useState } from "react"
 import styles from "./Card.module.css"
+
 const Card = () => {
     const [items, setItems] = useState([
         { id: 1, img: 'benzema.jpg', stat: '' },
