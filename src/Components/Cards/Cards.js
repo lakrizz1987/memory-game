@@ -18,8 +18,16 @@ const Cards = () => {
         { id: 6, img: 'ronaldo.jpg', stat: '' }
     ].sort(() => Math.random() - 0.5))
 
+    const [prevId,setPrevId] = useState(-1);
+
+    const handleClick = (id)=>{
+        if(prevId === -1){
+            setPrevId(id)
+        }
+    }
+
     return (
-        items.map((item,index) => <Card key={index} img={item.img} />)
+        items.map((item,index) => <Card handleClick={handleClick} key={index} item={item} />)
     )
 }
 
