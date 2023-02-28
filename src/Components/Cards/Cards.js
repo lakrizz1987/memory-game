@@ -18,17 +18,51 @@ const Cards = () => {
         { id: 6, img: 'ronaldo.jpg', stat: '' }
     ].sort(() => Math.random() - 0.5))
 
-    const [prevId,setPrevId] = useState(-1);
+    const [prevId, setPrevId] = useState(-1);
 
-    const handleClick = (id)=>{
-        if(prevId === -1){
-            setPrevId(id)
-            
+    function check(current) {
+        if (items[current].id === items[prevId].id) {
+            setItems(state => {
+                state[current].stat = 'correct';
+                state[prevId].stat = 'correct';
+                return [...state]
+            })
+            setPrevId(-1)
+        } else {
+            setItems(state => {
+                state[current].stat = 'wrong';
+                state[prevId].stat = 'wrong';
+                return [...state]
+            })
+            setTimeout(() => {
+                setItems(state => {
+                    state[current].stat = '';
+                    state[prevId].stat = '';
+                    return [...state]
+                })
+                
+                setPrevId(-1)
+            }, 1000)
         }
     }
 
+    const handleClick = (id) => {
+        if(items[id].stat === ''){
+            if (prevId === -1) {
+                setItems(state => {
+                    state[id].stat = 'active';
+                    return [...state]
+                })
+                setPrevId(id)
+            } else {
+                check(id)
+            }
+        }
+        
+    }
+
     return (
-        items.map((item,index) => <Card handleClick={handleClick} key={index} item={item} />)
+        items.map((item, index) => <Card handleClick={handleClick} key={index} id={index} item={item} />)
     )
 }
 
