@@ -23,6 +23,7 @@ const Cards = () => {
     const handleClick = (id)=>{
         if(prevId === -1){
             setPrevId(id)
+            
         }
     }
 

@@ -1,10 +1,30 @@
-.image {
+.imageFootboler {
     max-width: 95%;
     max-height: 95%;
     transform: scale(0);
     animation: 2s hideImage linear;
     transition: transform 0.5s;
 }
+
+div.active{
+    transform: rotateY(0);
+}
+
+.active .imageFootboler{
+    transform: scale(1);
+}
+
+div.wrong{
+    background-image: none !important;
+    background: red;
+}
+
+div.correct{
+    background-image: none !important;
+    background: rgb(17, 209, 0);
+}
+
+
 
 @keyframes hideImage {
 
@@ -18,8 +38,8 @@
     }
 }
 
-.cardBox {
-    width: 130px;
+div.cardBox  {
+    width: 130px; 
     height: 180px;
     background-image: url('../../../public/images/back-bg.jpg');
     background-position: center;

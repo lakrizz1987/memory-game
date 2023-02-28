@@ -1,10 +1,10 @@
-import styles from "./Card.module.css"
+import './Card.css'
 
 const Card = ({ item, handleClick }) => {
-
+        const itemClass = item.stat ? ' active ' + item.stat : ''
     return (
-        <div className={styles.cardBox} onClick={() => handleClick(item.id)}>
-            <img className={styles.image} src={`/images/${item.img}`} alt='logo' />
+        <div className={'cardBox' + itemClass}  onClick={() => handleClick(item.id)}>
+            <img className='imageFootboler'  src={`/images/${item.img}`} alt='logo' />
         </div>
     )
 }
