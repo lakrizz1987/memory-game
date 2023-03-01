@@ -1,0 +1,35 @@
+.statBox{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.651);
+}
+
+.startBtn{
+    padding: 20px 35px;
+    font-size: 32px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 5.5px;
+    background-color: rgb(248, 177, 23);
+    position: absolute;
+    top: 50%;
+    animation: startButShow 2s forwards ;
+    transform: translate(-50%,-50%);
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.startBtn:hover{
+    box-shadow: -1px -1px 30px 0px rgba(255,255,255,1);
+    font-size: 36px;
+}
+
+@keyframes startButShow {
+    0%{
+        left: -40%;
+    }100%{
+        left: 50%;
+    }
+}
