@@ -18,25 +18,22 @@ export const ItemProvider = ({ children }) => {
         { id: 6, img: 'ronaldo.jpg', stat: '' }
     ].sort(() => Math.random() - 0.5));
 
+    const [isInitilaStart,setIsInitilaStart] = useState(true);
     const [prevId, setPrevId] = useState(-1);
     const [isReadyToClick, setIsReadyToClick] = useState(true);
-    const [isAllCardsCorrect, setIsAllCardCorrect] = useState(false);
     const [isGameStart, setIsGameStart] = useState(true);
     const [gameOver, setGameOver] = useState(false);
 
     function resetGame(){
         setIsGameStart(true);
         setGameOver(false);
+        setIsInitilaStart(false);
         setItems(state=>{
             state.forEach(card=>card.stat = '')
             return [...state]
         })
     }
 
-    function endGame() {
-        setGameOver(true)
-
-    }
 
     function startGame() {
         setIsGameStart(false)
@@ -57,8 +54,7 @@ export const ItemProvider = ({ children }) => {
                     }
                 }
                 if (isOver) {
-                    setIsAllCardCorrect(true);
-                    endGame()
+                    setGameOver(true)
                 }
                 return [...state]
             });
@@ -103,13 +99,12 @@ export const ItemProvider = ({ children }) => {
     return (
         <ItemContext.Provider value={{
             items,
-            isAllCardsCorrect,
             handleClick,
             isGameStart,
             gameOver,
-            endGame,
             startGame,
-            resetGame
+            resetGame,
+            isInitilaStart
         }}>
             {children}
         </ItemContext.Provider>

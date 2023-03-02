@@ -9,11 +9,10 @@ import ItemContext from './context/ItemContext';
 function App() {
   const ctx = useContext(ItemContext)
 
-
   return (
 
     <div className="App">
-      {ctx.isGameStart ? <StartScreen /> : ''}
+      {(ctx.isGameStart && ctx.isInitilaStart) ? <StartScreen /> : ''}
       {ctx.gameOver ? <StartScreen/> : ''}
       <Container>
         <Cards endGame={ctx.endGame} />
