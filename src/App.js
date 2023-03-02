@@ -10,9 +10,11 @@ function App() {
 
   const [isGameStart, setIsGameStart] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-
+  
+  
   function endGame(){
     setGameOver(true)
+
   }
 
   function startGame() {

@@ -20,6 +20,8 @@ const useItems = () => {
     const [isReadyToClick, setIsReadyToClick] = useState(true);
     const [isAllCardsCorrect, setIsAllCardCorrect] = useState(false);
 
+    
+
     function check(current) {
         if (items[current].id === items[prevId].id) {
             setItems(state => {
