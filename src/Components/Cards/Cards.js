@@ -19,6 +19,7 @@ const Cards = () => {
     ].sort(() => Math.random() - 0.5))
 
     const [prevId, setPrevId] = useState(-1);
+    const [isReadyToClick,setIsReadyToClick] = useState(true)
 
     function check(current) {
         if (items[current].id === items[prevId].id) {
@@ -29,25 +30,27 @@ const Cards = () => {
             })
             setPrevId(-1)
         } else {
+            setIsReadyToClick(false);
             setItems(state => {
                 state[current].stat = 'wrong';
                 state[prevId].stat = 'wrong';
-                return [...state]
+                return [...state];
             })
             setTimeout(() => {
                 setItems(state => {
                     state[current].stat = '';
                     state[prevId].stat = '';
-                    return [...state]
+                    return [...state];
                 })
                 
-                setPrevId(-1)
+                setPrevId(-1);
+                setIsReadyToClick(true);
             }, 1000)
         }
     }
 
     const handleClick = (id) => {
-        if(items[id].stat === ''){
+        if(items[id].stat === '' && isReadyToClick){
             if (prevId === -1) {
                 setItems(state => {
                     state[id].stat = 'active';
