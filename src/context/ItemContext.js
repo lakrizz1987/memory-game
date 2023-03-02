@@ -30,7 +30,7 @@ export const ItemProvider = ({ children }) => {
         setIsInitilaStart(false);
         setItems(state=>{
             state.forEach(card=>card.stat = '')
-            return [...state]
+            return [...state.sort(() => Math.random() - 0.5)]
         })
     }
 
