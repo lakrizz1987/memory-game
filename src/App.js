@@ -1,6 +1,4 @@
-
 import { useContext } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
 import './App.css';
 import Cards from './Components/Cards/Cards';
 import Container from './Components/Container/Container';
@@ -9,7 +7,6 @@ import ItemContext from './context/ItemContext';
 
 function App() {
   const ctx = useContext(ItemContext)
-
   return (
 
     <div className="App">

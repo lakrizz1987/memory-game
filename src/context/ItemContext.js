@@ -1,8 +1,12 @@
 import { createContext, useState } from "react";
-import ReactAudioPlayer from 'react-audio-player';
+import flipSound from '../sounds/flip.mp3';
+import useSound from 'use-sound';
+
 const ItemContext = createContext();
 
 export const ItemProvider = ({ children }) => {
+    const [play] = useSound(flipSound);
+
     const [items, setItems] = useState([
         { id: 1, img: 'benzema.jpg', stat: '' },
         { id: 1, img: 'benzema.jpg', stat: '' },
@@ -18,18 +22,18 @@ export const ItemProvider = ({ children }) => {
         { id: 6, img: 'ronaldo.jpg', stat: '' }
     ].sort(() => Math.random() - 0.5));
 
-    const [isInitilaStart,setIsInitilaStart] = useState(true);
+    const [isInitilaStart, setIsInitilaStart] = useState(true);
     const [prevId, setPrevId] = useState(-1);
     const [isReadyToClick, setIsReadyToClick] = useState(true);
     const [isGameStart, setIsGameStart] = useState(true);
     const [gameOver, setGameOver] = useState(false);
-    
-    function resetGame(){
+
+    function resetGame() {
         setIsGameStart(true);
         setGameOver(false);
         setIsInitilaStart(false);
-        setItems(state=>{
-            state.forEach(card=>card.stat = '')
+        setItems(state => {
+            state.forEach(card => card.stat = '')
             return [...state.sort(() => Math.random() - 0.5)]
         })
     }
@@ -81,7 +85,7 @@ export const ItemProvider = ({ children }) => {
     };
 
     const handleClick = (id) => {
-        
+        play()
         if (items[id].stat === '' && isReadyToClick) {
             if (prevId === -1) {
                 setItems(state => {
