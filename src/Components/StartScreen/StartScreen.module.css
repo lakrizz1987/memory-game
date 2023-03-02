@@ -7,6 +7,7 @@
 }
 
 .win{
+    
     font-size: 65px;
     text-shadow: 3px -4px 1px #0e0e0e;
     font-weight: bold;
@@ -14,8 +15,9 @@
     position: absolute;
     top: 30%;
     transform: translate(-50%,-50%);
-    animation: textShow 2s forwards , blink-animation 1s steps(5, start) infinite; ;
-    
+    animation: textShow 3s forwards , blink-animation 1s steps(5, start) infinite; 
+    text-align: center;
+    width: 500px;
 }
 
 .startBtn{
@@ -26,7 +28,7 @@
     background-color: rgb(248, 177, 23);
     position: absolute;
     top: 50%;
-    animation: startButShow 2s forwards ;
+    animation: startButShow 3s forwards ;
     transform: translate(-50%,-50%);
     border-radius: 20px;
     border: none;

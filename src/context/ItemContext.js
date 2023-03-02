@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-
+import ReactAudioPlayer from 'react-audio-player';
 const ItemContext = createContext();
 
 export const ItemProvider = ({ children }) => {
@@ -23,7 +23,7 @@ export const ItemProvider = ({ children }) => {
     const [isReadyToClick, setIsReadyToClick] = useState(true);
     const [isGameStart, setIsGameStart] = useState(true);
     const [gameOver, setGameOver] = useState(false);
-
+    
     function resetGame(){
         setIsGameStart(true);
         setGameOver(false);
@@ -81,6 +81,7 @@ export const ItemProvider = ({ children }) => {
     };
 
     const handleClick = (id) => {
+        
         if (items[id].stat === '' && isReadyToClick) {
             if (prevId === -1) {
                 setItems(state => {
