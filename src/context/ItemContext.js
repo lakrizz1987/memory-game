@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 
-const useItems = () => {
+const ItemContext = createContext();
+
+export const ItemProvider = ({ children }) => {
     const [items, setItems] = useState([
         { id: 1, img: 'benzema.jpg', stat: '' },
         { id: 1, img: 'benzema.jpg', stat: '' },
@@ -19,8 +21,27 @@ const useItems = () => {
     const [prevId, setPrevId] = useState(-1);
     const [isReadyToClick, setIsReadyToClick] = useState(true);
     const [isAllCardsCorrect, setIsAllCardCorrect] = useState(false);
+    const [isGameStart, setIsGameStart] = useState(true);
+    const [gameOver, setGameOver] = useState(false);
 
-    
+    function resetGame(){
+        setIsGameStart(true);
+        setGameOver(false);
+        setItems(state=>{
+            state.forEach(card=>card.stat = '')
+            return [...state]
+        })
+    }
+
+    function endGame() {
+        setGameOver(true)
+
+    }
+
+    function startGame() {
+        setIsGameStart(false)
+    }
+
 
     function check(current) {
         if (items[current].id === items[prevId].id) {
@@ -37,6 +58,7 @@ const useItems = () => {
                 }
                 if (isOver) {
                     setIsAllCardCorrect(true);
+                    endGame()
                 }
                 return [...state]
             });
@@ -77,7 +99,21 @@ const useItems = () => {
 
     };
 
-    return [items, isAllCardsCorrect, handleClick];
+
+    return (
+        <ItemContext.Provider value={{
+            items,
+            isAllCardsCorrect,
+            handleClick,
+            isGameStart,
+            gameOver,
+            endGame,
+            startGame,
+            resetGame
+        }}>
+            {children}
+        </ItemContext.Provider>
+    )
 }
 
-export default useItems;
+export default ItemContext;

@@ -1,22 +1,14 @@
-import { useEffect } from "react"
-import useItems from "../../hooks/useItems"
+import { useContext} from "react"
+import ItemContext from "../../context/ItemContext";
 import Card from "../Card/Card"
 
 
-const Cards = ({endGame}) => {
+const Cards = () => {
     
-    const [items,isAllCardsCorrect,handleClick] = useItems();
-
-    useEffect(()=>{
-        if(isAllCardsCorrect){
-            endGame();
-        }
-    },[isAllCardsCorrect,endGame])
-
- 
-
+    const ctx = useContext(ItemContext);
+    
     return (
-        items.map((item, index) => <Card handleClick={handleClick} key={index} id={index} item={item} />)
+        ctx.items.map((item, index) => <Card handleClick={ctx.handleClick} key={index} id={index} item={item} />)
     )
 }
 

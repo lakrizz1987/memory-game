@@ -1,32 +1,22 @@
 
-import { useState } from 'react';
+import { useContext } from 'react';
 import './App.css';
 import Cards from './Components/Cards/Cards';
 import Container from './Components/Container/Container';
 import StartScreen from './Components/StartScreen/StartScreen';
-
+import ItemContext from './context/ItemContext';
 
 function App() {
+  const ctx = useContext(ItemContext)
 
-  const [isGameStart, setIsGameStart] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
-  
-  
-  function endGame(){
-    setGameOver(true)
-
-  }
-
-  function startGame() {
-    setIsGameStart(true)
-  }
 
   return (
 
     <div className="App">
-      {isGameStart ? '' : <StartScreen startGameHandler={startGame} />}
+      {ctx.isGameStart ? <StartScreen /> : ''}
+      {ctx.gameOver ? <StartScreen/> : ''}
       <Container>
-        <Cards endGame={endGame} />
+        <Cards endGame={ctx.endGame} />
       </Container>
     </div>
 
