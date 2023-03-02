@@ -8,6 +8,7 @@ const StartScreen = () => {
     return (
         <div className={styles.statBox}>
             {ctx.isGameStart ? <button onClick={ctx.startGame} className={styles.startBtn}>Let's Play</button> : ''}
+            {ctx.gameOver ? <span className={styles.win}>You Win !!!</span > : ''}
             {ctx.gameOver ? <button onClick={ctx.resetGame} className={styles.startBtn}>Reset Game</button> : ''}
         </div>
 

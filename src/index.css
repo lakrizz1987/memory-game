@@ -5,9 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('../public/images/hd1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
 }
 
-*,::after,::before{
+*,
+::after,
+::before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;

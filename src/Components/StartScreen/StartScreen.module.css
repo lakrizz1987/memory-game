@@ -6,6 +6,18 @@
     background-color: rgba(0, 0, 0, 0.651);
 }
 
+.win{
+    font-size: 65px;
+    text-shadow: 3px -4px 1px #0e0e0e;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 30%;
+    transform: translate(-50%,-50%);
+    animation: textShow 2s forwards , blink-animation 1s steps(5, start) infinite; ;
+    
+}
+
 .startBtn{
     padding: 20px 35px;
     font-size: 32px;
@@ -26,9 +38,23 @@
     font-size: 36px;
 }
 
+@keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+
 @keyframes startButShow {
     0%{
         left: -40%;
+    }100%{
+        left: 50%;
+    }
+}
+
+@keyframes textShow {
+    0%{
+        left: 140%;
     }100%{
         left: 50%;
     }
